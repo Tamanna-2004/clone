@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>img gallery</title>
+</head>
+
+<style>
+
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+    }
+
+    .gallery{
+        width: 900px;
+        display: flex;
+        overflow-x: scroll;
+    }
+
+    .gallery div{
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 20px;
+        padding: 10px;
+        flex: none;
+    }
+    .gallery div img{
+        width: 100%;
+        filter: grayscale(100%);
+        transition: transform 0.5s;
+    }
+    .gallery::-webkit-scrollbar{
+        display: none;
+    }
+
+    .gallery-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10% auto;
+    }
+
+    #back, #front{
+        width: 50px;
+        cursor: pointer;
+        margin: 40px;
+    }
+    .gallery div img:hover{
+        filter: grayscale(0);
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+</style>
+<body>
+    <div class="gallery-wrap">
+        <img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\back.png" alt="back" id="back">
+        <div class="gallery">
+            <div>
+                <span><img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\slider_img1.jpeg" alt="error1"></span>
+                <span><img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\slider_img2.jpeg" alt="error2"></span>
+                <span><img src= "C:\Users\aggar\OneDrive\Desktop\webdev\New folder\slider_img3.jpg" alt="error3"></span>
+            </div>
+            <div>
+                <span><img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\slider_img4.jpeg" alt="error4"></span>
+                <span><img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\slider_img5.jpeg" alt="error5"></span>
+                <span><img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\slide_img6.jpeg" alt="error6"></span>
+            </div>
+        </div>
+        <img src="C:\Users\aggar\OneDrive\Desktop\webdev\New folder\next.png" alt="front" id="front">
+    </div>
+    
+    <script>
+        let scrollContainer = document.querySelector(".gallery");
+        let backbtn = document.getElementById('back');
+        let nextbtn = document.getElementById('front');
+
+        scrollContainer.addEventListener("wheel", (evt)=>{
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY;
+        });
+
+        nextbtn.addEventListener("click", ()=>{
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft += 300; 
+        });
+
+        backbtn.addEventListener("click", ()=>{
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft -= 300;
+        });
+    </script>
+    
+</body>
+</html>
